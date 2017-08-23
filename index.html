@@ -6,10 +6,10 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
+<body ng-app="myApp">
   <h1>The <strong>facebook</strong> Friend Machine</h1>
 
-  <div class="friends">
+  <div class="friends" ng-controller="FriendCtrl">
     <form class="form-inline searchForm" role="form">
       <div class="form-group">
         <input class="form-control" placeholder="Search Anything About Your Friends">
@@ -30,17 +30,18 @@
     </form>
 
     <ul>
-      <li class='friend'>
-        <img class="profile-pic" src='http://placebear.com/50/50.jpg'>
-        <h3>Cali Fornia</h3>
+      <li class='friend' ng-repeat="friend in friends">
+        Location: {{friend.location.city}}, {{friend.location.state}}, {{friend.location.country}}
+        <img class="profile-pic" ng-src='{{friend.pic_square}}'>
+        <h3>{{friend.name}}</h3>
         <div class="location">
-          Location: New Port Beach, California, United States
+          Location: {{friend.location.city}}, {{friend.location.state}}, {{friend.location.country}}
         </div>
         <div class="status">
-          Status: I hate the snow. I wish I was on the beach right now!!!
+          Status: {{friend.status}}
         </div>
         <div class="num-friends">
-          Friends: 1,367
+          Friends: {{friend.friend_count}}
         </div>
       </li>
     </ul>
@@ -48,6 +49,9 @@
 
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+  <script src="./app.js"></script>
+  <!-- <script src="./FriendCtrl.js"></script> -->
   <!-- your scripts here -->
 </body>
 </html>
