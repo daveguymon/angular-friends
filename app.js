@@ -1,5 +1,7 @@
 angular.module('myApp', []).controller('FriendCtrl', function($scope) {
-  $scope.friends = getFriends();
+  $scope.friends = getFriends()
+
+
 })
 
 
